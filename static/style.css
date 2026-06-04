@@ -1,0 +1,255 @@
+/* Additional styles for notifications and call UI */
+.toast-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 12px 20px;
+    z-index: 1000;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+}
+
+.toast-notification.show {
+    transform: translateX(0);
+}
+
+.toast-notification.success {
+    border-left: 4px solid #28a745;
+}
+
+.toast-notification.error {
+    border-left: 4px solid #dc3545;
+}
+
+.toast-notification.info {
+    border-left: 4px solid #17a2b8;
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toast-content i {
+    font-size: 20px;
+}
+
+.incoming-call-notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    z-index: 2000;
+    min-width: 300px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.call-notification-content {
+    padding: 20px;
+}
+
+.caller-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.caller-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #075E54;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.caller-details h4 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+}
+
+.caller-details p {
+    margin: 0;
+    color: #666;
+}
+
+.call-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.call-actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.accept-call {
+    background: #28a745;
+    color: white;
+}
+
+.accept-call:hover {
+    background: #218838;
+    transform: scale(1.05);
+}
+
+.reject-call {
+    background: #dc3545;
+    color: white;
+}
+
+.reject-call:hover {
+    background: #c82333;
+    transform: scale(1.05);
+}
+
+.status-dot {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.status-dot.online {
+    background: #4caf50;
+}
+
+.status-dot.offline {
+    background: #9e9e9e;
+}
+
+.user-avatar {
+    position: relative;
+}
+
+.message-status {
+    font-size: 10px;
+    color: #667781;
+    margin-top: 3px;
+    text-align: right;
+}
+
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: #075E54;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.btn-download:hover {
+    background: #054a42;
+    color: white;
+}
+
+.call-history-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    border-bottom: 1px solid #e9edef;
+    cursor: pointer;
+}
+
+.call-history-item:hover {
+    background: #f5f6f6;
+}
+
+.call-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #e9edef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.call-details {
+    flex: 1;
+}
+
+.call-user {
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.call-info {
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+
+.call-time {
+    font-size: 11px;
+    color: #667781;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .toast-notification {
+        bottom: 10px;
+        right: 10px;
+        left: 10px;
+        transform: translateY(100px);
+    }
+    
+    .toast-notification.show {
+        transform: translateY(0);
+    }
+    
+    .incoming-call-notification {
+        width: 90%;
+        left: 5%;
+        transform: translateX(0);
+    }
+    
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
