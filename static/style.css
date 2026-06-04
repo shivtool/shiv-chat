@@ -1,8 +1,7 @@
 /* ===== Toast Notifications ===== */
 .toast-notification {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 20px; right: 20px;
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -18,16 +17,13 @@
 .toast-content { display: flex; align-items: center; gap: 10px; }
 .toast-content i { font-size: 20px; }
 
-/* ===== Incoming Call Notification ===== */
+/* ===== Incoming Call ===== */
 .incoming-call-notification {
-    position: fixed;
-    top: 50%; left: 50%;
+    position: fixed; top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
-    border-radius: 15px;
+    background: white; border-radius: 15px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    z-index: 9999;
-    min-width: 300px;
+    z-index: 9999; min-width: 300px;
     animation: slideInCall 0.3s ease;
 }
 @keyframes slideInCall {
@@ -36,64 +32,38 @@
 }
 .call-notification-content { padding: 20px; }
 .caller-info { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
-.caller-avatar {
-    width: 60px; height: 60px; border-radius: 50%;
-    background: #075E54; color: white;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 24px; font-weight: bold;
-}
+.caller-avatar { width: 60px; height: 60px; border-radius: 50%; background: #075E54; color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; }
 .caller-details h4 { margin: 0 0 5px 0; font-size: 18px; }
 .caller-details p  { margin: 0; color: #666; }
 .call-actions { display: flex; gap: 10px; justify-content: center; }
-.call-actions button {
-    padding: 10px 20px; border: none; border-radius: 25px;
-    cursor: pointer; font-size: 14px;
-    display: flex; align-items: center; gap: 8px; transition: all 0.3s;
-}
+.call-actions button { padding: 10px 20px; border: none; border-radius: 25px; cursor: pointer; font-size: 14px; display: flex; align-items: center; gap: 8px; transition: all 0.3s; }
 .accept-call { background: #28a745; color: white; }
 .accept-call:hover { background: #218838; transform: scale(1.05); }
 .reject-call { background: #dc3545; color: white; }
 .reject-call:hover { background: #c82333; transform: scale(1.05); }
 
-/* ===== Status Dot ===== */
-.status-dot {
-    position: absolute; bottom: 2px; right: 2px;
-    width: 12px; height: 12px;
-    border-radius: 50%; border: 2px solid white;
-}
+/* ===== Status / Badge ===== */
+.status-dot { position: absolute; bottom: 2px; right: 2px; width: 12px; height: 12px; border-radius: 50%; border: 2px solid white; }
 .status-dot.online  { background: #4caf50; }
 .status-dot.offline { background: #9e9e9e; }
-.user-avatar { position: relative; }
-
-/* ===== Message Status ===== */
 .message-status { font-size: 10px; color: #667781; margin-top: 3px; text-align: right; }
-.btn-download {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 8px 12px; background: #075E54; color: white;
-    text-decoration: none; border-radius: 5px; font-size: 12px;
-}
+.btn-download { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; background: #075E54; color: white; text-decoration: none; border-radius: 5px; font-size: 12px; }
 .btn-download:hover { background: #054a42; color: white; }
 
 /* ===== Call History ===== */
-.call-history-item {
-    display: flex; align-items: center; gap: 15px;
-    padding: 12px; border-bottom: 1px solid #e9edef; cursor: pointer;
-}
+.call-history-item { display: flex; align-items: center; gap: 15px; padding: 12px; border-bottom: 1px solid #e9edef; cursor: pointer; }
 .call-history-item:hover { background: #f5f6f6; }
-.call-icon {
-    width: 40px; height: 40px; border-radius: 50%;
-    background: #e9edef;
-    display: flex; align-items: center; justify-content: center; font-size: 18px;
-}
+.call-icon { width: 40px; height: 40px; border-radius: 50%; background: #e9edef; display: flex; align-items: center; justify-content: center; font-size: 18px; }
 .call-details { flex: 1; }
-.call-user   { font-weight: bold; margin-bottom: 3px; }
-.call-info   { font-size: 12px; margin-bottom: 2px; }
-.call-time   { font-size: 11px; color: #667781; }
+.call-user  { font-weight: bold; margin-bottom: 3px; }
+.call-info  { font-size: 12px; margin-bottom: 2px; }
+.call-time  { font-size: 11px; color: #667781; }
 
-/* ===================================
-   MOBILE RESPONSIVE — WhatsApp style
-   =================================== */
+/* =============================================
+   MOBILE — WhatsApp style full-screen panels
+   ============================================= */
 @media (max-width: 768px) {
+
     .toast-notification {
         bottom: 10px; right: 10px; left: 10px;
         transform: translateY(100px);
@@ -101,63 +71,75 @@
     .toast-notification.show { transform: translateY(0); }
 
     .incoming-call-notification {
-        width: 90%; left: 5%;
-        transform: translateX(0) translateY(-50%);
-        top: 50%;
+        width: 90%; left: 5%; right: 5%;
+        transform: translateY(-50%);
     }
 
-    /* Make chat container a full-screen flex column */
+    /* Container: no overflow so keyboard can resize */
     .chat-container {
-        flex-direction: column;
         position: relative;
-        overflow: hidden;
+        overflow: visible !important;
     }
 
-    /* Sidebar takes full screen on mobile */
+    /* Sidebar: full screen, slides left when chat opens */
     .sidebar {
         width: 100% !important;
-        height: 100vh;
-        position: absolute;
-        top: 0; left: 0;
-        z-index: 10;
-        transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        position: fixed !important;
+        top: 0; left: 0; right: 0; bottom: 0;
+        height: 100% !important;
+        height: 100dvh !important;
+        z-index: 20;
+        transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
         transform: translateX(0);
     }
-
-    /* When chat is open, sidebar slides out */
     .sidebar.hidden-mobile {
         transform: translateX(-100%);
         pointer-events: none;
     }
 
-    /* Chat area takes full screen on mobile */
+    /* Chat area: full screen, slides in from right */
     .chat-area {
-        width: 100% !important;
-        height: 100vh;
-        position: absolute;
-        top: 0; left: 0;
-        z-index: 5;
-        transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        position: fixed !important;
+        top: 0; left: 0; right: 0; bottom: 0;
+        /* KEY: let the browser resize this when keyboard appears */
+        height: 100% !important;
+        height: 100dvh !important;
+        z-index: 10;
+        transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
         transform: translateX(100%);
+        /* flex column so input stays at bottom */
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden;
     }
-
-    /* When chat is open, slide in from right */
     .chat-area.visible-mobile {
         transform: translateX(0);
     }
 
-    /* Back button — only on mobile */
+    /* messages area shrinks when keyboard appears */
+    .messages-area {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        overflow-y: auto !important;
+    }
+
+    /* input always at bottom */
+    .input-area {
+        flex-shrink: 0 !important;
+        position: relative !important;
+    }
+
+    /* Back button */
     .back-btn {
         display: flex !important;
-        align-items: center;
-        justify-content: center;
+        align-items: center; justify-content: center;
         width: 36px; height: 36px;
         background: rgba(255,255,255,0.15);
         border-radius: 50%;
         cursor: pointer;
         margin-right: 8px;
-        transition: background 0.2s;
         flex-shrink: 0;
+        transition: background 0.2s;
     }
     .back-btn:hover { background: rgba(255,255,255,0.25); }
     .back-btn i { font-size: 18px; color: white; }
